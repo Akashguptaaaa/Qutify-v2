@@ -1,7 +1,6 @@
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Section from "./components/Section/Section";
-import SongsSection from "./components/SongsSection/SongsSection";
 import "./App.css";
 
 function App() {
@@ -17,7 +16,11 @@ function App() {
         title="New Albums"
         endpoint="https://qtify-backend.labs.crio.do/albums/new"
       />
-      <SongsSection />
+      <Section
+        title="Songs"
+        endpoint="https://qtify-backend.labs.crio.do/songs"
+        isSongsSection
+      />
     </div>
   );
 }
