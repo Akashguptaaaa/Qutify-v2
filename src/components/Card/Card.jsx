@@ -3,7 +3,7 @@ import styles from "./Card.module.css";
 
 function Card({ image, follows, title }) {
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} album-card`}>
       <div className={styles.imageWrap}>
         <img src={image} alt={title} className={styles.image} />
         <Chip label={`${follows} Follows`} size="small" className={styles.chip} />

@@ -4,6 +4,8 @@ import Card from "../Card/Card";
 import styles from "./Section.module.css";
 
 const INITIAL_VISIBLE_CARDS = 7;
+const CARD_WIDTH = 160;
+const CARD_GAP = 20;
 
 function Section({ title, endpoint }) {
   const [items, setItems] = useState([]);
@@ -24,9 +26,7 @@ function Section({ title, endpoint }) {
   }, [endpoint]);
 
   const maxStartIndex = Math.max(0, items.length - INITIAL_VISIBLE_CARDS);
-  const visibleItems = showAll
-    ? items
-    : items.slice(startIndex, startIndex + INITIAL_VISIBLE_CARDS);
+  const trackOffset = startIndex * (CARD_WIDTH + CARD_GAP);
 
   return (
     <section className={styles.section}>
@@ -64,16 +64,34 @@ function Section({ title, endpoint }) {
         </div>
       ) : null}
 
-      <div className={styles.grid}>
-        {visibleItems.map((album) => (
-          <Card
-            key={album.id}
-            image={album.image}
-            follows={album.follows}
-            title={album.title}
-          />
-        ))}
-      </div>
+      {showAll ? (
+        <div className={styles.grid}>
+          {items.map((album) => (
+            <Card
+              key={album.id}
+              image={album.image}
+              follows={album.follows}
+              title={album.title}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className={styles.sliderViewport}>
+          <div
+            className={styles.sliderTrack}
+            style={{ transform: `translateX(-${trackOffset}px)` }}
+          >
+            {items.map((album) => (
+              <Card
+                key={album.id}
+                image={album.image}
+                follows={album.follows}
+                title={album.title}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

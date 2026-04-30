@@ -9,7 +9,7 @@ function Navbar({ searchData }) {
   const isInRouter = useInRouterContext();
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={`navbar ${styles.navbar}`} data-testid="navbar">
       {isInRouter ? (
         <Link to="/">
           <Logo />

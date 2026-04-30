@@ -11,6 +11,7 @@ function Search({ placeholder = "search" }) {
         type="text"
         name="search"
         className={`search ${styles.search}`}
+        data-testid="search-input"
         placeholder={placeholder}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
