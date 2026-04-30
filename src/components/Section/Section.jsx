@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -6,24 +7,27 @@ import Card from "../Card/Card";
 import Carousel from "../Carousel/Carousel";
 import styles from "./Section.module.css";
 
-function Section({ title, endpoint, isSongsSection = false }) {
+function Section({ title, endpoint, isSongsSection = false, onSongsLoaded, onSongSelect }) {
   const [items, setItems] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("all");
   const [showAll, setShowAll] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get(endpoint);
-        setItems(response.data || []);
+        const data = response.data || [];
+        setItems(data);
+        if (isSongsSection && typeof onSongsLoaded === "function") onSongsLoaded(data);
       } catch (error) {
         setItems([]);
       }
     }
 
     fetchData();
-  }, [endpoint]);
+  }, [endpoint, isSongsSection, onSongsLoaded]);
 
   useEffect(() => {
     if (!isSongsSection) return;
@@ -89,6 +93,9 @@ function Section({ title, endpoint, isSongsSection = false }) {
               count={album.follows}
               countLabel="Follows"
               className="album-card"
+              onClick={() => {
+                if (album.slug) navigate(`/album/${album.slug}`);
+              }}
             />
           ))}
         </div>
@@ -103,6 +110,13 @@ function Section({ title, endpoint, isSongsSection = false }) {
               count={isSongsSection ? item.likes : item.follows}
               countLabel={isSongsSection ? "Likes" : "Follows"}
               className={isSongsSection ? "song-card" : "album-card"}
+              onClick={() => {
+                if (isSongsSection) {
+                  if (typeof onSongSelect === "function") onSongSelect(item);
+                } else if (item.slug) {
+                  navigate(`/album/${item.slug}`);
+                }
+              }}
             />
           )}
         />

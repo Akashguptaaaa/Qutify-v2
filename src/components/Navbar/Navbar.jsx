@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 import Search from "../Search/Search";
 import styles from "./Navbar.module.css";
 
-function Navbar({ searchData }) {
+function Navbar({ searchData, onFeedbackOpen }) {
   const isInRouter = useInRouterContext();
 
   return (
@@ -18,7 +18,7 @@ function Navbar({ searchData }) {
         <Logo />
       )}
       <Search placeholder="search a song" searchData={searchData} />
-      <Button>Give Feedback</Button>
+      <Button onClick={onFeedbackOpen}>Give Feedback</Button>
     </nav>
   );
 }

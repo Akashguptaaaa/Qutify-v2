@@ -1,0 +1,27 @@
+.section {
+  padding: 10px 32px 28px;
+}
+
+.section h2 {
+  color: #ffffff;
+  text-align: center;
+  margin: 0 0 14px;
+  font-size: 2rem;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.accordion {
+  background: #121212 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  border-radius: 8px !important;
+}
+
+.expand {
+  color: #34c94b;
+  font-weight: 700;
+}

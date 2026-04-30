@@ -1,3 +1,7 @@
+.searchContainer {
+  position: relative;
+}
+
 .wrapper {
   display: flex;
   height: 48px;
@@ -24,16 +28,37 @@
   display: block;
 }
 
-.listElement {
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
+.dropdown {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100%;
+  background: #121212;
+  border: 1px solid #34c94b;
+  border-radius: 0 0 8px 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 20;
+}
+
+.dropdown li {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background: #3b44f6;
 }
 
 .albumTitle {
+  margin: 0 0 4px;
+  color: #ffffff;
   font-size: 16px;
 }
 
 .albumArtists {
+  margin: 0;
+  color: #d5d8e1;
   font-size: 12px;
 }

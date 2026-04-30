@@ -1,0 +1,32 @@
+.page {
+  min-height: 100vh;
+  background: #121212;
+  padding: 20px 32px 32px;
+}
+
+.header a {
+  color: #34c94b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.header h1 {
+  color: #fff;
+  margin: 12px 0 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination :global(.MuiPaginationItem-root) {
+  color: #fff;
+}
