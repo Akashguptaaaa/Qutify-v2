@@ -3,9 +3,12 @@ import axios from "axios";
 import Card from "../Card/Card";
 import styles from "./Section.module.css";
 
-function Section({ title, endpoint, buttonText = "Collapse" }) {
+const INITIAL_VISIBLE_CARDS = 7;
+
+function Section({ title, endpoint }) {
   const [items, setItems] = useState([]);
-  const [collapsed, setCollapsed] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
     async function fetchAlbums() {
@@ -20,27 +23,57 @@ function Section({ title, endpoint, buttonText = "Collapse" }) {
     fetchAlbums();
   }, [endpoint]);
 
+  const maxStartIndex = Math.max(0, items.length - INITIAL_VISIBLE_CARDS);
+  const visibleItems = showAll
+    ? items
+    : items.slice(startIndex, startIndex + INITIAL_VISIBLE_CARDS);
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
         <h2>{title}</h2>
-        <button type="button" onClick={() => setCollapsed((prev) => !prev)}>
-          {collapsed ? "Show all" : buttonText}
+        <button
+          type="button"
+          onClick={() => {
+            setShowAll((prev) => !prev);
+            setStartIndex(0);
+          }}
+        >
+          {showAll ? "Collapse" : "Show all"}
         </button>
       </div>
 
-      {!collapsed ? (
-        <div className={styles.grid}>
-          {items.map((album) => (
-            <Card
-              key={album.id}
-              image={album.image}
-              follows={album.follows}
-              title={album.title}
-            />
-          ))}
+      {!showAll ? (
+        <div className={styles.sliderControls}>
+          <button
+            type="button"
+            aria-label="previous"
+            onClick={() => setStartIndex((prev) => Math.max(0, prev - 1))}
+            disabled={startIndex === 0}
+          >
+            Prev
+          </button>
+          <button
+            type="button"
+            aria-label="next"
+            onClick={() => setStartIndex((prev) => Math.min(maxStartIndex, prev + 1))}
+            disabled={startIndex >= maxStartIndex}
+          >
+            Next
+          </button>
         </div>
       ) : null}
+
+      <div className={styles.grid}>
+        {visibleItems.map((album) => (
+          <Card
+            key={album.id}
+            image={album.image}
+            follows={album.follows}
+            title={album.title}
+          />
+        ))}
+      </div>
     </section>
   );
 }

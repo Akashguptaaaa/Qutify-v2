@@ -30,3 +30,24 @@
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 20px;
 }
+
+.sliderControls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.sliderControls button {
+  border: none;
+  background: #ffffff;
+  color: #121212;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
+
+.sliderControls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
