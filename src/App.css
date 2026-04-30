@@ -1,0 +1,79 @@
+.app {
+  min-height: 100vh;
+  background: var(--color-black, #121212);
+  color: var(--color-white, #ffffff);
+}
+
+.section {
+  padding: 8px 32px 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  color: var(--color-white, #ffffff);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sectionHeader button {
+  border: none;
+  background: transparent;
+  color: var(--color-green, #34c94b);
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sliderControls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.sliderControls button {
+  background: var(--color-white, #ffffff);
+  color: var(--color-black, #121212);
+  border: none;
+  border-radius: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.cardRow,
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.albumCard {
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-white, #ffffff);
+  color: var(--color-black, #121212);
+}
+
+.albumCard img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.cardMeta {
+  padding: 8px 10px 12px;
+}
+
+.cardMeta h3 {
+  margin: 0;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,11 @@
+.navbar {
+  background-color: #34C94B;
+  height: 74px;
+  width: 100%;
+  padding-left: 32px;   /* important for spacing test */
+  padding-right: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
