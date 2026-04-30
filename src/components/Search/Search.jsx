@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Search.module.css";
 import searchIcon from "../../../assets/Search icon.svg";
 
-function Search({ placeholder = "search" }) {
+function Search({ placeholder = "search a song" }) {
   const [query, setQuery] = useState("");
 
   return (
