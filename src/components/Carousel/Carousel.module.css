@@ -1,0 +1,31 @@
+.wrapper {
+  position: relative;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.nav {
+  position: absolute;
+  top: 88px;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #34c94b;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav[aria-label="previous"] {
+  left: -10px;
+}
+
+.nav[aria-label="next"] {
+  right: -10px;
+}
