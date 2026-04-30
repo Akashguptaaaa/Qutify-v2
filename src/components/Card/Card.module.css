@@ -1,0 +1,40 @@
+.card {
+  width: 160px;
+}
+
+.imageWrap {
+  position: relative;
+  height: 205px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.chip {
+  position: absolute !important;
+  left: 8px;
+  bottom: 8px;
+  background: #121212 !important;
+  color: #fff !important;
+  font-size: 0.65rem !important;
+  height: 23px !important;
+}
+
+.info {
+  height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin: 8px 0 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
