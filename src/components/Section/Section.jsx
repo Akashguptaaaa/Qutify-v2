@@ -6,7 +6,7 @@ import styles from "./Section.module.css";
 
 function Section({ title, endpoint }) {
   const [items, setItems] = useState([]);
-  const [showCarousel, setShowCarousel] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     async function fetchAlbums() {
@@ -28,14 +28,14 @@ function Section({ title, endpoint }) {
         <button
           type="button"
           onClick={() => {
-            setShowCarousel((prev) => !prev);
+            setShowAll((prev) => !prev);
           }}
         >
-          {showCarousel ? "Show all" : "Collapse"}
+          {showAll ? "Collapse" : "Show all"}
         </button>
       </div>
 
-      {!showCarousel ? (
+      {showAll ? (
         <div className={styles.grid}>
           {items.map((album) => (
             <Card
